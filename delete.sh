@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -rf /usr/local/caddy/www/aria2/Download
+rm -rf /usr/local/caddy/www/aria2/Download/*
