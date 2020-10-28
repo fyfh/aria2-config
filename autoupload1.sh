@@ -15,15 +15,15 @@ while true; do  #提取下载文件根路径，如把/data/a/b/c/d.jpg变成/dat
     if [ "$path" = "$downloadpath" ] && [ $2 -eq 1 ]
         then
         rm '${filepath}.aria2'
-        rclone move -v "${filepath}" "${rclone1}"
-        rclone move -v "${filepath}" "${rclone2}"
+        rclone copy -v "${filepath}" "${rclone1}"
+        rclone copy -v "${filepath}" "${rclone2}"
         rm -rf "${filepath}"
         exit 0
     elif [ "$path" = "$downloadpath" ]   #文件夹
         then
-	      rm '${filepath}.aria2'
-        rclone move -v "${filepath}" "${rclone1}/${filepath#${downloadpath}/}"
-        rclone move -v "${filepath}" "${rclone2}/${filepath#${downloadpath}/}"
+	rm '${filepath}.aria2'
+        rclone copy -v "${filepath}" "${rclone1}/${filepath#${downloadpath}/}"
+        rclone copy -v "${filepath}" "${rclone2}/${filepath#${downloadpath}/}"
         rm -rf "${filepath}"
         exit 0
     fi
